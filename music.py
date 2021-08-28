@@ -2,6 +2,7 @@ import discord
 from discord.ext import commands
 import youtube_dl
 
+client = commands.Bot(command_prefix='-', intents=discord.Intents.all())
 
 class music(commands.Cog):
     def __init__(self, client):
@@ -22,7 +23,7 @@ class music(commands.Cog):
         await ctx.voice_client.disconnect()
 
     @commands.command()
-    async def play(self, ctx, url):
+    async def play(self, ctx, url: str):
         ctx.voice_client.stop()
         FFMPEG_OPTIONS = {
             'before_options':
